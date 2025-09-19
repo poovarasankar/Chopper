@@ -8,15 +8,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-  --primary: #0a3d62;     /* Royal Navy Blue */
-  --secondary: #1e272e;   /* Dark Charcoal (cockpit / luxury leather feel) */
-  --accent: #ffd700;      /* Royal Gold accent */
-  --light: #f5f6fa;       /* Soft Light Gray for clean UI */
-  --dark: #121212;        /* Deep Black for elegance */
-  --success: #00a8cc;     /* Sky Blue (aviation touch) */
-  --warning: #ff6f00;     /* Vibrant Amber for alerts */
-}
-
+      --primary: #0a3d62;     /* Royal Navy Blue */
+      --secondary: #1e272e;   /* Dark Charcoal (cockpit / luxury leather feel) */
+      --accent: #ffd700;      /* Royal Gold accent */
+      --light: #f5f6fa;       /* Soft Light Gray for clean UI */
+      --dark: #121212;        /* Deep Black for elegance */
+      --success: #00a8cc;     /* Sky Blue (aviation touch) */
+      --warning: #ff6f00;     /* Vibrant Amber for alerts */
+    }
 
     * {
       margin: 0;
@@ -34,7 +33,12 @@
 
     /* Header with helicopter background */
     header {
-      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      background:
+        linear-gradient(120deg, rgba(10, 61, 98, 0.75), rgba(30, 39, 46, 0.35)),
+        url("Image.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: white;
       text-align: center;
       padding: 60px 20px;
@@ -44,6 +48,34 @@
       border-bottom-right-radius: 50% 20%;
     }
 
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      height: 100px;
+      width: auto;
+
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .logo-placeholder {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
     .helicopter-bg {
       position: absolute;
       top: 0;
@@ -51,7 +83,6 @@
       width: 100%;
       height: 100%;
       opacity: 0.15;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 15 L60 40 L70 40 L60 50 L65 60 L50 55 L35 60 L40 50 L30 40 L40 40 Z" fill="white"/></svg>');
       animation: fly 30s linear infinite;
       z-index: 0;
     }
@@ -109,11 +140,14 @@
     }
 
     .highlight {
-      background: linear-gradient(45deg, var(--accent), var(--warning));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
       font-weight: 800;
       display: inline-block;
+      padding: 0 10px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
     }
 
     header p {
@@ -130,8 +164,8 @@
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       text-align: center;
-      padding: 30px;
-      font-size: 2.5rem;
+      padding: 15px;
+      font-size: 1.5rem;
       font-weight: 800;
       margin: -30px auto 40px;
       width: 90%;
@@ -142,6 +176,29 @@
       z-index: 10;
       animation: pulse 2s infinite ease-in-out;
       border: 3px solid white;
+      overflow: hidden;
+    }
+
+    .price-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.1)
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
     }
 
     @keyframes pulse {
@@ -192,6 +249,24 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transform: translateX(-100%);
+
+    }
+
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
     }
 
     .card-body {
@@ -201,6 +276,7 @@
     /* Form Styling */
     .form-group {
       margin-bottom: 20px;
+      position: relative;
     }
 
     .form-group label {
@@ -239,6 +315,23 @@
       display: inline-block;
       text-align: center;
       width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn:hover {
@@ -263,6 +356,18 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
     }
 
     .qr-container:hover {
@@ -281,6 +386,28 @@
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-placeholder::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+      );
+      animation: scan 3s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
     }
 
     /* Success message */
@@ -292,6 +419,24 @@
       text-align: center;
       margin-bottom: 20px;
       display: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .success-message::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+      animation: successPulse 2s infinite;
+    }
+
+    @keyframes successPulse {
+      0%, 100% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
     }
 
     /* Contact box */
@@ -307,6 +452,22 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transform: translateX(-100%);
+      animation: contactShine 4s infinite;
+    }
+
+    @keyframes contactShine {
+      100% { transform: translateX(100%); }
     }
 
     .contact-box i {
@@ -325,6 +486,11 @@
       margin-bottom: 15px;
       padding-left: 35px;
       position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .terms-list li:hover {
+      transform: translateX(5px);
     }
 
     .terms-list li::before {
@@ -333,6 +499,11 @@
       left: 0;
       top: 0;
       font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .terms-list li:hover::before {
+      transform: rotate(20deg);
     }
 
     /* Footer */
@@ -344,6 +515,18 @@
       margin-top: 60px;
       border-top-left-radius: 50% 20%;
       border-top-right-radius: 50% 20%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
     }
 
     /* Animations */
@@ -395,6 +578,30 @@
       75% { transform: translateY(-30px) translateX(10px); }
     }
 
+    /* Price comparison styling */
+    .price-comparison {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #ccc;
+      font-size: 1.8rem;
+    }
+
+    .discount-badge {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
     /* Media queries for responsiveness */
     @media (max-width: 768px) {
       header h1 {
@@ -410,6 +617,19 @@
         padding: 20px;
       }
 
+      .price-comparison {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .original-price {
+        font-size: 1.4rem;
+      }
+
+      .discount-badge {
+        font-size: 0.9rem;
+      }
+
       .floating-helicopter, .floating-helicopter-2 {
         display: none;
       }
@@ -417,6 +637,10 @@
       .contact-box {
         font-size: 1.1rem;
         padding: 20px;
+      }
+
+      .logo {
+        height: 80px;
       }
     }
   </style>
@@ -433,19 +657,31 @@
     <div class="floating-helicopter">🚁</div>
     <div class="floating-helicopter-2">🚁</div>
 
+    <div class="logo-container">
+      <div class="logo">
+        <div class="logo-placeholder"><img src="PU logo.png" height="150" width="150"></div>
+      </div>
+      <div class="logo">
+        <div class="logo-placeholder"><img src="ACCE logo.png" height="90" width="90"></div>
+      </div>
+    </div>
+
     <h2>Association of Consulting Civil Engineers (India)<br>Puducherry Centre</h2>
     <h1><span class="highlight">Helicopter Joy Ride</span></h1>
     <h1>Pondicherry</h1>
-    <p><b>October 10, 11 & 12</b></p>
+    <p style="background-color: #4361ee;"><b>October 10, 11 & 12</b></p>
   </header>
 
   <div class="price-box">
-    ₹5999 Per Head
+     <span class="discount-badge" style="font-size: 1.2rem;">Early Bird!</span>
+    <div class="price-comparison">
+      <span class="original-price">₹6,500</span>
+      <span style="font-size: 1.2rem;">₹5,999 Per Head</span>
+
+    </div>
   </div>
 
   <div class="container">
-
-
     <div class="card">
       <div class="card-header">
         <i class="fas fa-qrcode"></i> Booking & Registration
@@ -504,29 +740,13 @@
             <input type="number" id="passengers" class="form-control" min="1" max="10" value="1" required>
           </div>
 
-          <div class="form-group">
-            <label for="idProof">Government ID Proof</label>
-            <select id="idProof" class="form-control" required>
-              <option value="">Select ID proof</option>
-              <option value="aadhar">Aadhar Card</option>
-              <option value="passport">Passport</option>
-              <option value="driving">Driving License</option>
-              <option value="voter">Voter ID</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="idNumber">ID Number</label>
-            <input type="text" id="idNumber" class="form-control" placeholder="Enter your ID number" required>
-          </div>
-
           <button type="submit" class="btn">Register Now</button>
         </form>
 
         <div id="paymentSection" style="display: none;">
           <div class="qr-section">
             <div class="qr-container">
-              <p><b>Scan & Pay ₹<span id="totalAmount">5999</span></b></p>
+              <p style="font-size: 2.3rem;"><b>Scan & Pay ₹<span id="totalAmount" >5999</span></b></p>
               <div class="qr-placeholder">Payment QR Code</div>
               <p>Complete payment to confirm booking</p>
             </div>
@@ -539,7 +759,8 @@
         </div>
       </div>
     </div>
-<div class="grid">
+
+    <div class="grid">
       <div class="card">
         <div class="card-header">
           <i class="fas fa-info-circle"></i> About the Event
@@ -594,6 +815,7 @@
         </div>
       </div>
     </div>
+
     <div class="card">
       <div class="card-header">
         <i class="fas fa-file-alt"></i> Terms & Conditions
