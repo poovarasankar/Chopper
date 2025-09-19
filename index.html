@@ -48,33 +48,7 @@
       border-bottom-right-radius: 50% 20%;
     }
 
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
 
-    .logo {
-      height: 100px;
-      width: auto;
-
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-    }
-
-    .logo-placeholder {
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      font-size: 0.9rem;
-    }
 
     .helicopter-bg {
       position: absolute;
@@ -144,10 +118,10 @@
       color: white;
       font-weight: 800;
       display: inline-block;
-      padding: 0 10px;
+      padding: 5px 10px;
       border-radius: 8px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
+      font: 1.1em ;
     }
 
     header p {
@@ -590,7 +564,7 @@
     .original-price {
       text-decoration: line-through;
       color: #ccc;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
     }
 
     .discount-badge {
@@ -623,7 +597,7 @@
       }
 
       .original-price {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
 
       .discount-badge {
@@ -639,11 +613,10 @@
         padding: 20px;
       }
 
-      .logo {
-        height: 80px;
-      }
+
     }
   </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <!-- Animated background elements -->
@@ -653,30 +626,34 @@
   <div class="bubble" style="width: 50px; height: 50px; bottom: 20%; right: 5%; animation-delay: 3s;"></div>
 
   <header>
-    <div class="helicopter-bg"></div>
-    <div class="floating-helicopter">🚁</div>
-    <div class="floating-helicopter-2">🚁</div>
 
-    <div class="logo-container">
-      <div class="logo">
-        <div class="logo-placeholder"><img src="PU logo.png" height="150" width="150"></div>
-      </div>
-      <div class="logo">
-        <div class="logo-placeholder"><img src="ACCE logo.png" height="90" width="90"></div>
-      </div>
+
+    <div class="corner-logos">
+  <div class="logo left-logo">
+    <img src="ACCE_logo.png" alt="Left Logo" width="80" height="80">
+  </div>
+  <div class="logo right-logo">
+    <img src="PU_logo.png" alt="Right Logo" width="80" height="80">
+  </div>
+</div>
+
+
+    <div class="header-content">
+      <h2>Association of Consulting Civil Engineers (India)<br>Puducherry Centre</h2>
+      <h1><span class="highlight">Helicopter Joy Ride</span></h1>
+      <h1>Pondicherry</h1>
+      <p style="background-color: #4361ee;"><b>October 10, 11 & 12</b></p>
     </div>
 
-    <h2>Association of Consulting Civil Engineers (India)<br>Puducherry Centre</h2>
-    <h1><span class="highlight">Helicopter Joy Ride</span></h1>
-    <h1>Pondicherry</h1>
-    <p style="background-color: #4361ee;"><b>October 10, 11 & 12</b></p>
+
+    </div>
   </header>
 
   <div class="price-box">
      <span class="discount-badge" style="font-size: 1.2rem;">Early Bird!</span>
     <div class="price-comparison">
       <span class="original-price">₹6,500</span>
-      <span style="font-size: 1.2rem;">₹5,999 Per Head</span>
+      <span>₹5,999 Per Head</span>
 
     </div>
   </div>
